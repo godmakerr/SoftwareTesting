@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: com.demo.service.impl.UserServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.023 s <<< FAILURE! - in com.demo.service.impl.UserServiceImplTest
+test_Create_PlaintextPasswordStored  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 安全漏洞：系统将密码以明文形式存储，应使用密码哈希算法！
+	at com.demo.service.impl.UserServiceImplTest.test_Create_PlaintextPasswordStored(UserServiceImplTest.java:258)
+
+test_Create_WeakPassword  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统应该拒绝弱密码(123456)，但接受了它
+	at com.demo.service.impl.UserServiceImplTest.test_Create_WeakPassword(UserServiceImplTest.java:183)
+
+test_Create_InvalidUserID  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统应该拒绝包含特殊字符的用户ID(user@#$%^&*())，但接受了它
+	at com.demo.service.impl.UserServiceImplTest.test_Create_InvalidUserID(UserServiceImplTest.java:221)
+
+test_Create_DuplicateUserID  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统应该检查并拒绝创建重复的userID，但未进行检查
+	at com.demo.service.impl.UserServiceImplTest.test_Create_DuplicateUserID(UserServiceImplTest.java:346)
+

@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.demo.service.impl.NewsServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 35, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.098 s <<< FAILURE! - in com.demo.service.impl.NewsServiceImplTest
+create_SQLInjectionVulnerability  Time elapsed: 0.01 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统存在SQL注入漏洞，未能过滤SQL关键字和特殊字符
+	at com.demo.service.impl.NewsServiceImplTest.create_SQLInjectionVulnerability(NewsServiceImplTest.java:756)
+
+findById_EntityNotFound_StateException  Time elapsed: 0.004 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统应该捕获懒加载异常并转换为友好的业务异常，但直接传播了底层异常
+	at com.demo.service.impl.NewsServiceImplTest.findById_EntityNotFound_StateException(NewsServiceImplTest.java:241)
+
+create_XSSVulnerability  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统未能过滤XSS脚本标签，存在安全漏洞
+	at com.demo.service.impl.NewsServiceImplTest.create_XSSVulnerability(NewsServiceImplTest.java:681)
+
+create_DangerousXSSVulnerability  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统存在高危XSS漏洞，未能过滤iframe、javascript或远程脚本加载代码
+	at com.demo.service.impl.NewsServiceImplTest.create_DangerousXSSVulnerability(NewsServiceImplTest.java:720)
+
+update_NullNews_ShouldThrowException  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统应该检查news参数非null并抛出相应异常，但未进行检查
+	at com.demo.service.impl.NewsServiceImplTest.update_NullNews_ShouldThrowException(NewsServiceImplTest.java:774)
+

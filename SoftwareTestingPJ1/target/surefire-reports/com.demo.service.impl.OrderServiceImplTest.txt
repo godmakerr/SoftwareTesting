@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: com.demo.service.impl.OrderServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 0.072 s <<< FAILURE! - in com.demo.service.impl.OrderServiceImplTest
+orderState_RejectCompletedOrder_ShouldFail  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统不应允许将已完成(STATE_FINISH)的订单状态变更为已拒绝(STATE_REJECT)
+	at com.demo.service.impl.OrderServiceImplTest.orderState_RejectCompletedOrder_ShouldFail(OrderServiceImplTest.java:285)
+
+submit_OutsideBusinessHours_ShouldBeRejected  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统不应接受营业时间(9:00-22:00)外的订单预订(23:00)
+	at com.demo.service.impl.OrderServiceImplTest.submit_OutsideBusinessHours_ShouldBeRejected(OrderServiceImplTest.java:368)
+
+submit_PastStartTime_ShouldBeRejected  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统不应接受过去时间(2025-04-04T14:37:37.117)的订单预订
+	at com.demo.service.impl.OrderServiceImplTest.submit_PastStartTime_ShouldBeRejected(OrderServiceImplTest.java:311)
+
+submit_HugeHours_ShouldBeRejected  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统存在整数溢出漏洞：2147483647 小时 * 100 价格 = -100（应为正数但却是负数，表明发生了整数溢出）
+	at com.demo.service.impl.OrderServiceImplTest.submit_HugeHours_ShouldBeRejected(OrderServiceImplTest.java:220)
+
+submit_NullVenue_ShouldThrowException  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统应主动检查并抛出带有明确错误消息的NullPointerException，而不是在访问null对象时才抛出默认NPE
+	at com.demo.service.impl.OrderServiceImplTest.submit_NullVenue_ShouldThrowException(OrderServiceImplTest.java:97)
+
+updateOrder_OrderNotFound_ShouldThrowException  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统应该主动检查订单是否存在并抛出带有明确错误消息的异常，而不是导致空指针异常
+	at com.demo.service.impl.OrderServiceImplTest.updateOrder_OrderNotFound_ShouldThrowException(OrderServiceImplTest.java:262)
+
+updateOrder_NegativeHours_ShouldBeRejected  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 系统不应接受负数小时数(-5)或计算负数总价(-500)
+	at com.demo.service.impl.OrderServiceImplTest.updateOrder_NegativeHours_ShouldBeRejected(OrderServiceImplTest.java:192)
+
